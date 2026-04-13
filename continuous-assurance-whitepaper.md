@@ -120,6 +120,22 @@ Deep observability goes beyond traditional monitoring. It encompasses structured
 
 Detection without response is theatre. The third pillar encodes the organisation's response patterns into progressively automated runbooks. Early iterations may simply page the right team. Mature implementations auto-remediate known failure classes, escalate novel failures with full context, and continuously refine their own detection thresholds based on feedback.
 
+```mermaid
+graph LR
+    subgraph "The Continuous Assurance Loop"
+        A["🔴 Signal Generation\n(Chaos Engineering)\nInject controlled faults"] -->|"Produces a\nknown signal"| B["🔵 Signal Detection\n(Deep Observability)\nDetect & measure impact"]
+        B -->|"Triggers\nresponse"| C["🟠 Response Acceleration\n(Progressive Automation)\nRemediate & learn"]
+        C -->|"Informs better\nexperiments"| A
+    end
+
+    C -->|"Each cycle\nimproves"| D(("🟢\nCustomer\nExperience\nProtected"))
+
+    style A fill:#1B2A4A,stroke:#1B2A4A,color:#fff
+    style B fill:#2E86AB,stroke:#2E86AB,color:#fff
+    style C fill:#FF6B35,stroke:#FF6B35,color:#fff
+    style D fill:#28a745,stroke:#28a745,color:#fff
+```
+
 > **The Feedback Loop:** Each chaos experiment tests not only the system, but the observability layer and the response mechanism. Over time, the loop tightens: experiments become more targeted, detection becomes faster, and response becomes more automated. This is the mechanism by which Continuous Assurance compounds.
 
 ---
@@ -272,6 +288,26 @@ The ultimate objective of Continuous Assurance is not to keep platform engineers
 ### The Automation Hierarchy
 
 Automation in the Continuous Assurance model follows a strict hierarchy. Each level builds on the one below it, and skipping levels creates fragility.
+
+```mermaid
+graph BT
+    L0["<b>Level 0: Detection</b>\nReliable alerts fire when a known condition occurs\n<i>Prerequisite: accurate, low-noise alerting</i>"]
+    L1["<b>Level 1: Triage</b>\nAlerts auto-enriched with diagnostic context\n<i>Engineer receives a briefing, not just a page</i>"]
+    L2["<b>Level 2: Remediation</b>\nKnown failure classes resolved automatically\n<i>Restart, reroute, rollback — without human action</i>"]
+    L3["<b>Level 3: Prevention</b>\nPrecursor signals trigger pre-emptive action\n<i>Incidents prevented before they materialise</i>"]
+
+    L0 -->|"Enables"| L1
+    L1 -->|"Enables"| L2
+    L2 -->|"Enables"| L3
+
+    L3 -->|"Frees capacity for"| BV["🟢 <b>Business Value</b>\nPlatform team works on\nstrategic initiatives"]
+
+    style L0 fill:#e8f4f8,stroke:#2E86AB,color:#333
+    style L1 fill:#d0e8f0,stroke:#2E86AB,color:#333
+    style L2 fill:#b0d8e8,stroke:#2E86AB,color:#333
+    style L3 fill:#1B2A4A,stroke:#1B2A4A,color:#fff
+    style BV fill:#28a745,stroke:#28a745,color:#fff
+```
 
 **Level 0: Detection Automation**
 
